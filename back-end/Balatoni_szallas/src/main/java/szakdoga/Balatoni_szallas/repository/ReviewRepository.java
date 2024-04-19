@@ -8,4 +8,6 @@ import szakdoga.Balatoni_szallas.model.Review;
 
 public interface ReviewRepository extends JpaRepository<Review, Long>{
 	List<Review> findByApartmanId(Long apartmanId);
+	List<Review> findByUserId(Long userId);
+	 Review findByReviewId(Long reviewId);
 }

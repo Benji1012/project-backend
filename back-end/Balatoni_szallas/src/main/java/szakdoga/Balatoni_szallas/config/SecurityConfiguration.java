@@ -52,6 +52,10 @@ public class SecurityConfiguration {
 				.requestMatchers("/api/apartments/**").hasAnyAuthority(Role.USER.name())
 				.requestMatchers("/api/reservations/**").hasAnyAuthority(Role.USER.name())
 				.requestMatchers("/api/reviews/new").hasAnyAuthority(Role.USER.name())
+				.requestMatchers("/api/reviews/user/**").hasAnyAuthority(Role.USER.name())
+				.requestMatchers("/api/reviews/delete/**").hasAnyAuthority(Role.USER.name())
+				.requestMatchers("/api/reviews/view/one/**").hasAnyAuthority(Role.USER.name())
+				.requestMatchers("/api/reviews/edit/**").hasAnyAuthority(Role.USER.name())
 				.anyRequest().authenticated())
 				.sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authenticationProvider(authenticationProvider()).addFilterBefore(

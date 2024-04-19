@@ -132,44 +132,43 @@ public class ApartmanController {
 	        }
 	        if (type != null && type!= -1) {
 	            predicates.add(cb.equal(apartmanRoot.get("type"),  type ));
-	            System.out.println("type: "+type);
 	        }
 	        if (reviewPoints != null && reviewPoints !=0) {
-	            predicates.add(cb.greaterThan(apartmanRoot.get("reviewPoints"),  reviewPoints ));
+	            predicates.add(cb.greaterThanOrEqualTo(apartmanRoot.get("reviewPoints"),  reviewPoints ));
 	        }
 	        if (parkingSlots != null && parkingSlots!= 0) {
-	            predicates.add(cb.greaterThan(apartmanRoot.get("parkingSlots"),  parkingSlots ));
+	            predicates.add(cb.greaterThanOrEqualTo(apartmanRoot.get("parkingSlots"),  parkingSlots ));
 	        }
 	        if (numberOfRoomsMin != null && numberOfRoomsMin!= 0) {
 	        	predicates.add(
-	                cb.greaterThan(apartmanRoot.get("numberOfRooms"), numberOfRoomsMin)
+	                cb.greaterThanOrEqualTo(apartmanRoot.get("numberOfRooms"), numberOfRoomsMin)
 	            );
 	        }
 	        
 	        if ( numberOfRoomsMax != null && numberOfRoomsMax!= 0) {
 	        	predicates.add(
-	                cb.lessThan(apartmanRoot.get("numberOfRooms"), numberOfRoomsMax)
+	                cb.lessThanOrEqualTo(apartmanRoot.get("numberOfRooms"), numberOfRoomsMax)
 	            );
 	        }
 	        
 	        if ( numberOfPeopleMax != null && numberOfPeopleMax!= 0) {
 	        	predicates.add(
-	                cb.lessThan(apartmanRoot.get("numberOfPeople"), numberOfPeopleMax)
+	                cb.lessThanOrEqualTo(apartmanRoot.get("numberOfPeople"), numberOfPeopleMax)
 	            );
 	        }
 	        if (numberOfPeopleMin != null && numberOfPeopleMin!= 0) {
 	        	predicates.add(
-	                cb.greaterThan(apartmanRoot.get("numberOfPeople"), numberOfPeopleMin)
+	                cb.greaterThanOrEqualTo(apartmanRoot.get("numberOfPeople"), numberOfPeopleMin)
 	            );
 	        }
 	        if ( numberOfBedsMax != null && numberOfBedsMax!= 0) {
 	        	predicates.add(
-	                cb.lessThan(apartmanRoot.get("numberOfBeds"), numberOfBedsMax)
+	                cb.lessThanOrEqualTo(apartmanRoot.get("numberOfBeds"), numberOfBedsMax)
 	            );
 	        }
 	        if (numberOfBedsMin != null && numberOfBedsMin!= 0) {
 	        	predicates.add(
-	                cb.greaterThan(apartmanRoot.get("numberOfBeds"), numberOfBedsMin)
+	                cb.greaterThanOrEqualTo(apartmanRoot.get("numberOfBeds"), numberOfBedsMin)
 	            );
 	        }
 	        if (isPartside != null) {
@@ -278,78 +277,78 @@ public class ApartmanController {
 	        }
 	        if (distBalaton != null && distBalaton != 0) {
 	        	predicates.add(
-	                cb.greaterThan(apartmanRoot.get("distBalaton"), distBalaton)
+	                cb.lessThanOrEqualTo(apartmanRoot.get("distBalaton"), distBalaton)
 	            );
 	        }
 	        if (distRail != null && distRail != 0) {
 	        	predicates.add(
-	                cb.greaterThan(apartmanRoot.get("distRail"), distRail)
+	                cb.lessThanOrEqualTo(apartmanRoot.get("distRail"), distRail)
 	            );
 	        }
 	        if (distBus != null && distBus != 0) {
 	        	predicates.add(
-	                cb.greaterThan(apartmanRoot.get("distBus"), distBus)
+	                cb.lessThanOrEqualTo(apartmanRoot.get("distBus"), distBus)
 	            );
 	        }
 	        if (distRestaurant != null && distRestaurant != 0) {
 	        	predicates.add(
-	                cb.greaterThan(apartmanRoot.get("distRestaurant"), distRestaurant)
+	                cb.lessThanOrEqualTo(apartmanRoot.get("distRestaurant"), distRestaurant)
 	            );
 	        }
 	        if (distCitycenter != null && distCitycenter != 0) {
 	        	predicates.add(
-	                cb.greaterThan(apartmanRoot.get("distCitycenter"), distCitycenter)
+	                cb.lessThanOrEqualTo(apartmanRoot.get("distCitycenter"), distCitycenter)
 	            );
 	        }
 	        if (isParking != null && isParking) {
 	            predicates.add(
-	                cb.greaterThan(apartmanRoot.get("parkingSlots"), 0));
+	                cb.greaterThanOrEqualTo(apartmanRoot.get("parkingSlots"), 0));
 	        }
 	        if (distBudapest != null && distBudapest != 0) {
 	        	predicates.add(
-	                cb.greaterThan(apartmanRoot.get("distBudapest"), distBudapest)
+	                cb.lessThanOrEqualTo(apartmanRoot.get("distBudapest"), distBudapest)
 	            );
 	        }
 	        if (distPub != null && distPub != 0) {
 	        	predicates.add(
-	                cb.greaterThan(apartmanRoot.get("distPub"), distPub)
+	                cb.lessThanOrEqualTo(apartmanRoot.get("distPub"), distPub)
 	            );
 	        }
 	        if (distGym != null && distGym != 0) {
 	        	predicates.add(
-	                cb.greaterThan(apartmanRoot.get("distGym"), distGym)
+	                cb.lessThanOrEqualTo(apartmanRoot.get("distGym"), distGym)
 	            );
 	        }
 	        if (distHypermarker != null && distHypermarker != 0) {
 	        	predicates.add(
-	                cb.greaterThan(apartmanRoot.get("distHypermarker"), distHypermarker)
+	                cb.lessThanOrEqualTo(apartmanRoot.get("distHypermarker"), distHypermarker)
 	            );
 	        }
 	        
 	        if (stars != null && stars != 0) {
 	        	predicates.add(
-	                cb.greaterThan(apartmanRoot.get("stars"), stars)
+	                cb.greaterThanOrEqualTo(apartmanRoot.get("stars"), stars)
 	            );
 	        }
 	        if (rentingFrom != null && rentingTo != null) {
 	        	predicates.add(cb.and(
-	                cb.greaterThan(apartmanRoot.get("rentingTo"), rentingFrom),
-	                cb.lessThan(apartmanRoot.get("rentingFrom"), rentingFrom)
+	                cb.greaterThanOrEqualTo(apartmanRoot.get("rentingTo"), rentingFrom),
+	                cb.lessThanOrEqualTo(apartmanRoot.get("rentingFrom"), rentingFrom)
 	            ));
 	        	predicates.add(cb.and(
-	                cb.greaterThan(apartmanRoot.get("rentingTo"), rentingTo),
-	                cb.lessThan(apartmanRoot.get("rentingFrom"), rentingTo)
+	                cb.greaterThanOrEqualTo(apartmanRoot.get("rentingTo"), rentingTo),
+	                cb.lessThanOrEqualTo(apartmanRoot.get("rentingFrom"), rentingTo)
 	            ));
 	           
 	        }
 	        if (priceMin != null && priceMin != 0) {
 	        	predicates.add(
-	                cb.greaterThan(apartmanRoot.get("price"), priceMin)
+	                cb.greaterThanOrEqualTo(apartmanRoot.get("price"), priceMin)
 	            );
 	        }
 	        if (priceMax != null && priceMax != 0) {
 	        	predicates.add(
-	                cb.lessThan(apartmanRoot.get("price"), priceMax)
+	                cb.lessThanOrEqualTo(apartmanRoot.get("price"), priceMax)
 	            );
 	        }
 	        
@@ -545,9 +544,7 @@ public class ApartmanController {
 	@DeleteMapping("/delete/{id}")
 	 public ResponseEntity deleteApartmanById( @PathVariable Long id) {
 		 apartmanRepository.deleteById(id);
-		 System.out.println(apartmanRepository.findById(id).toString());
 		 if(!apartmanRepository.findById(id).isPresent()) {
-			System.out.println("heló");
 			 return ResponseEntity.ok("ok");
 		 }else {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
