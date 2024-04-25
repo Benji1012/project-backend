@@ -16,8 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import szakdoga.Balatoni_szallas.model.Apartman;
 import szakdoga.Balatoni_szallas.model.Reservation;
+import szakdoga.Balatoni_szallas.model.User;
 import szakdoga.Balatoni_szallas.repository.ApartmanRepository;
 import szakdoga.Balatoni_szallas.repository.ReservationRepository;
+import szakdoga.Balatoni_szallas.repository.UserRepository;
+import szakdoga.Balatoni_szallas.service.EmailService;
+import szakdoga.Balatoni_szallas.service.impl.EmailServiceImpl;
 
 @RestController
 @RequestMapping("/api/reservations")
@@ -27,9 +31,18 @@ public class ReservationController {
 	private ReservationRepository reservationRepository;
 	@Autowired
 	private ApartmanRepository apartmanRepository;
+	@Autowired
+	private UserRepository userRepository;
+	@Autowired
+    private EmailService emailService;
 	
+	 
 	@PutMapping("/new")
 	Reservation newReservation(@RequestBody Reservation newReservation) {
+		Optional<User> optionalUser = userRepository.findById(newReservation.getUserId());
+		User user = optionalUser.get();
+		 emailService.sendEmail(user.getEmail(), "Sikeres foglalás", 
+				 "Ön sikeresen lefoglalta a következő szállást: "+newReservation.getApartmanName());
 		return reservationRepository.save(newReservation);
 	}
 	@GetMapping("/{userId}")
